@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php if ($generator->pdf): ?>
 <?= "<?= " ?>
             <?= "
-             Html::a('<i class=\"fa glyphicon glyphicon-hand-up\"></i> ' . " . $generator->generateString('PDF') . ", 
+             Html::a('<i class=\"fa glyphicon glyphicon-hand-up\"></i> ' . " . $generator->generateString('PDF') . ",
                 ['pdf', $urlParams],
                 [
                     'class' => 'btn btn-danger',
@@ -62,6 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="row">
+        <div class="col-sm-12">
 <?= "<?php \n" ?>
     $gridColumn = [
 <?php
@@ -87,11 +88,13 @@ if ($tableSchema === false) {
         'attributes' => $gridColumn
     ]);
 ?>
+        </div>
     </div>
 <?php foreach ($relations as $name => $rel): ?>
 <?php if ($rel[2] && isset($rel[3]) && !in_array($name, $generator->skippedRelations)): ?>
-    
+
     <div class="row">
+        <div class="col-sm-12">
 <?= "<?php\n" ?>
 if($provider<?= $rel[1] ?>->totalCount){
     $gridColumn<?= $rel[1] ?> = [
@@ -130,10 +133,13 @@ if($provider<?= $rel[1] ?>->totalCount){
 }
 <?= "?>\n" ?>
 
+        </div>
     </div>
 <?php elseif(empty($rel[2])): ?>
     <div class="row">
-        <h4><?= $rel[1] ?><?= "<?= " ?>' '. Html::encode($this->title) ?></h4>
+        <div class="col-sm-12">
+            <h4><?= $rel[1] ?><?= "<?= " ?>' '. Html::encode($this->title) ?></h4>
+        </div>
     </div>
     <?= "<?php \n" ?>
     $gridColumn<?= $rel[1] ?> = [
@@ -156,10 +162,12 @@ if($provider<?= $rel[1] ?>->totalCount){
     }
     ?>
     ];
-    echo DetailView::widget([
-        'model' => $model-><?= $name ?>,
-        'attributes' => $gridColumn<?= $rel[1] ?>
-    ]);
+    if($model-><?= $name ?>) {
+        echo DetailView::widget([
+            'model' => $model-><?= $name ?>,
+            'attributes' => $gridColumn<?= $rel[1] ?>
+        ]);
+    }
     ?>
 <?php endif; ?>
 <?php endforeach; ?>

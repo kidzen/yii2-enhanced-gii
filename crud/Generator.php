@@ -373,19 +373,19 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
                     'relations' => isset($relations[$tableName]) ? $relations[$tableName] : [],
                 ]));
             }
-            
+
             if ($this->pdf) {
                 $files[] = new CodeFile("$viewPath/_pdf.php", $this->render("views/_pdf.php", [
                     'relations' => isset($relations[$tableName]) ? $relations[$tableName] : [],
                 ]));
             }
-            
+
             if($this->saveAsNew){
                 $files[] = new CodeFile("$viewPath/saveAsNew.php", $this->render("views/saveAsNew.php", [
                     'relations' => isset($relations[$tableName]) ? $relations[$tableName] : [],
                 ]));
             }
-            
+
             if (isset($relations[$tableName]) && !$isTree) {
                 if ($this->expandable) {
                     $files[] = new CodeFile("$viewPath/_detail.php", $this->render("views/_detail.php", [
@@ -654,12 +654,12 @@ if (array_key_exists($attribute, $fk) && $attribute) {
             ],\n";
            return $output;
            }
-           else 
+           else
            { $output = "[
                 'attribute' => '$attribute',
                 'label' => " . $this->generateString(ucwords(Inflector::humanize($rel[5]))) . ",
-                'value' => function(\$model){                   
-                    return \$model->$rel[7]->$labelCol;                   
+                'value' => function(\$model){
+                    return \$model->$rel[7]->$labelCol;
                 },
                 'filterType' => GridView::FILTER_SELECT2,
                 'filter' => \\yii\\helpers\\ArrayHelper::map(\\$this->nsModel\\$rel[1]::find()->asArray()->all(), '{$rel[self::REL_PRIMARY_KEY]}', '$labelCol'),
@@ -668,7 +668,7 @@ if (array_key_exists($attribute, $fk) && $attribute) {
                 ],
                 'filterInputOptions' => ['placeholder' => '$humanize', 'id' => '$id']
             ],\n";
-           return $output;                          
+           return $output;
            }
         } else {
             return "'$attribute" . ($format === 'text' ? "" : ":" . $format) . "',\n";
