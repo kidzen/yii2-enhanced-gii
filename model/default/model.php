@@ -239,6 +239,10 @@ class <?= $className ?> extends <?= ($isTree) ? '\kartik\tree\models\Tree' . "\n
     {
 <?php if($generator->deletedBy && array_key_exists($generator->deletedBy, $labels)): ?>
         $query = new <?= $queryClassFullName ?>(get_called_class());
+        // uncomment and edit permission rule to view deleted items
+        /* if(\Yii::$app->user->can('see_deleted')){
+           return $query;
+        } */
         return $query->andWhere(['<?= $tableName ?>.<?= $generator->deletedBy ?>' => <?= $generator->deletedByValueRestored ?>]);
 <?php else: ?>
         return new <?= $queryClassFullName ?>(get_called_class());
