@@ -82,6 +82,21 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         ];
     }
 
+    public function beforeAction($action)
+    {
+        $toRedir = [
+            'update' => 'view',
+            'create' => 'view',
+            'delete' => 'index',
+        ];
+
+        if (isset($toRedir[$action->id])) {
+            Yii::$app->response->redirect(Url::to([$toRedir[$action->id]]), 301);
+            Yii::$app->end();
+        }
+        return parent::beforeAction($action);
+    }
+
     /**
      * Lists all <?= $modelClass ?> models.
      * @return mixed
@@ -190,9 +205,29 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 
         return $this->redirect(['index']);
     }
-<?php if ($generator->pdf):?>    
+
     /**
-     * 
+     * Permanently deletes an existing <?= $modelClass ?> model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * <?= implode("\n     * ", $actionParamComments) . "\n" ?>
+     * @return mixed
+     */
+    public function actionDelete(<?= $actionParams ?>)
+    {
+
+        $model = $this->findModel(<?= $actionParams ?>);
+        if($model->deleted_by != 0) {
+            if($model->delete()) {
+                Yii::$app->notify->success();
+                return $this->redirect(['index']);
+            }
+        }
+        Yii::$app->notify->fail();
+        return $this->redirect(['index']);
+    }
+<?php if ($generator->pdf):?>
+    /**
+     *
      * Export <?= $modelClass ?> information into PDF format.
      * <?= implode("\n     * ", $actionParamComments) . "\n" ?>
      * @return mixed
@@ -250,7 +285,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         if (Yii::$app->request->post('_asnew') != '1') {
             $model = $this->findModel(<?= $actionParams; ?>);
         }
-    
+
         if ($model->loadAll(Yii::$app->request->post()<?= !empty($generator->skippedRelations) ? ", [".implode(", ", $skippedRelations)."]" : ""; ?>) && $model->saveAll(<?= !empty($generator->skippedRelations) ? "[".implode(", ", $skippedRelations)."]" : ""; ?>)) {
             return $this->redirect(['view', <?= $urlParams ?>]);
         } else {
@@ -260,7 +295,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         }
     }
 <?php endif; ?>
-    
+
     /**
      * Finds the <?= $modelClass ?> model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -289,7 +324,7 @@ if (count($pks) === 1) {
     }
 <?php foreach ($relations as $name => $rel): ?>
 <?php if ($rel[2] && isset($rel[3]) && !in_array($name, $generator->skippedRelations)): ?>
-    
+
     /**
     * Action to load a tabular form grid
     * for <?= $rel[1] . "\n" ?>
