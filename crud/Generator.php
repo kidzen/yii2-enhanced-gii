@@ -26,7 +26,7 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
     public $hiddenColumns = 'id, lock';
     public $skippedColumns = 'created_at, updated_at, created_by, updated_by, deleted_at, deleted_by, created, modified, deleted';
     public $nsModel = 'app\models';
-    public $nsSearchModel = 'app\models';
+    public $nsSearchModel = 'app\models\search';
     public $generateSearchModel;
     public $searchModelClass;
     public $generateQuery = true;
@@ -40,7 +40,7 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
     public $optimisticLock = 'lock';
     public $createdAt = 'created_at';
     public $updatedAt = 'updated_at';
-    public $timestampValue = "new Expression('NOW()')";
+    public $timestampValue = "new \\yii\\db\\Expression('CURRENT_TIMESTAMP')";
     public $createdBy = 'created_by';
     public $updatedBy = 'updated_by';
     public $blameableValue = 'Yii::\$app->user->id';

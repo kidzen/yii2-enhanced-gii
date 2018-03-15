@@ -81,7 +81,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 <?php endif; ?>
         ];
     }
-
+    /*
     public function beforeAction($action)
     {
         $toRedir = [
@@ -96,6 +96,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         }
         return parent::beforeAction($action);
     }
+    */
 
     /**
      * Lists all <?= $modelClass ?> models.
@@ -212,7 +213,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
      * <?= implode("\n     * ", $actionParamComments) . "\n" ?>
      * @return mixed
      */
-    public function actionDelete(<?= $actionParams ?>)
+    public function actionDeletePermanent(<?= $actionParams ?>)
     {
 
         $model = $this->findModel(<?= $actionParams ?>);
