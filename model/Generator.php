@@ -58,8 +58,8 @@ class Generator extends BaseGenerator {
     public $deletedByValue = '\Yii::$app->user->id';
     public $deletedByValueRestored = '0';
     public $deletedAt = 'deleted_at';
-    public $deletedAtValue = 'new \\yii\\db\\Expression('CURRENT_TIMESTAMP')';
-    public $deletedAtValueRestored = 'new \\yii\\db\\Expression('CURRENT_TIMESTAMP')';
+    public $deletedAtValue = "new \\yii\\db\\Expression('CURRENT_TIMESTAMP')";
+    public $deletedAtValueRestored = "new \\yii\\db\\Expression('CURRENT_TIMESTAMP')";
     public $generateBaseOnly = false;
     public $UUIDColumn = 'id';
 
