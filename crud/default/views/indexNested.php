@@ -22,7 +22,7 @@ if ($modelClass === $searchModelClass) {
 
 /* @var $this yii\web\View */
 
-use yii\helpers\Html;
+use kartik\helpers\Html;
 use <?= ltrim($generator->modelClass, '\\') ?>;
 use kartik\tree\TreeView;
 use kartik\tree\Module;

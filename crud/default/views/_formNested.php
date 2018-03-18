@@ -14,7 +14,7 @@ $model = ($isTree) ? '$node' : '$model';
 echo "<?php\n";
 ?>
 
-use yii\helpers\Html;
+use kartik\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */

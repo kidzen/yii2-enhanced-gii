@@ -18,7 +18,7 @@ echo "<?php\n";
 <?= !empty($generator->searchModelClass) ? "/* @var \$searchModel " . ltrim($generator->searchModelClass, '\\') . " */\n" : '' ?>
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-use yii\helpers\Html;
+use kartik\helpers\Html;
 use kartik\export\ExportMenu;
 use <?= $generator->indexWidgetType === 'grid' ? "kartik\\grid\\GridView;" : "yii\\widgets\\ListView;" ?>
 
@@ -108,7 +108,7 @@ if ($generator->indexWidgetType === 'grid'):
 <?php endif; ?>
             ],
             'visibleButtons' => [
-                'delete-permanent' => 'update' => \Yii::$app->user->can('admin'),
+                'delete-permanent' => \Yii::$app->user->can('admin'),
             ]
         ],
     ];
