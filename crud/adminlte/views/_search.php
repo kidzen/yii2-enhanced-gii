@@ -11,7 +11,7 @@ $fk = $generator->generateFK();
 echo "<?php\n";
 ?>
 
-use yii\helpers\Html;
+use kartik\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */

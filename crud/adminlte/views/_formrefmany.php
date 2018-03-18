@@ -12,7 +12,7 @@ echo "<?php\n";
 use kartik\grid\GridView;
 use kartik\builder\TabularForm;
 use yii\data\ArrayDataProvider;
-use yii\helpers\Html;
+use kartik\helpers\Html;
 use yii\widgets\Pjax;
 
 $dataProvider = new ArrayDataProvider([
@@ -30,7 +30,7 @@ echo TabularForm::widget([
         'type' => TabularForm::INPUT_TEXT,
     ],
     'attributes' => [
-<?php foreach ($tableSchema->getColumnNames() as $attribute) : 
+<?php foreach ($tableSchema->getColumnNames() as $attribute) :
     $column = $tableSchema->getColumn($attribute);
     if (!in_array($attribute, $generator->skippedColumns) && $attribute != $relations[5]) {
         echo "        " . $generator->generateTabularFormField($attribute, $fk, $tableSchema) . ",\n";

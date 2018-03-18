@@ -8,7 +8,7 @@ use yii\helpers\StringHelper;
 ?>
 <?= "<?php" ?>
 
-use yii\helpers\Html;
+use kartik\helpers\Html;
 use kartik\tabs\TabsX;
 use yii\helpers\Url;
 $items = [

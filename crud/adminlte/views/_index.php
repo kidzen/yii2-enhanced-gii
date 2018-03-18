@@ -6,7 +6,7 @@ $urlParams = $generator->generateUrlParams();
 $nameAttribute = $generator->getNameAttribute();
 ?>
 <?= "<?php \n" ?>
-use \yii\helpers\Html;
+use \kartik\helpers\Html;
 use yii\widgets\DetailView;
 ?>
 

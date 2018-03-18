@@ -12,7 +12,7 @@ $fk = $generator->generateFK($tableSchema);
 echo "<?php\n";
 ?>
 
-use yii\helpers\Html;
+use kartik\helpers\Html;
 use yii\widgets\DetailView;
 use kartik\grid\GridView;
 
@@ -31,7 +31,7 @@ use kartik\grid\GridView;
     <div class="row">
 <?= "<?php \n" ?>
     $gridColumn = [
-<?php 
+<?php
 if ($tableSchema === false) {
     foreach ($generator->getColumnNames() as $name) {
         if (++$count < 6) {
@@ -52,7 +52,7 @@ if ($tableSchema === false) {
     echo DetailView::widget([
         'model' => $model,
         'attributes' => $gridColumn
-    ]); 
+    ]);
 ?>
     </div>
 </div>

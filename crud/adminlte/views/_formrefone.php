@@ -14,7 +14,7 @@ $fk = $generator->generateFK($tableSchema);
 echo "<?php\n";
 ?>
 
-use yii\helpers\Html;
+use kartik\helpers\Html;
 use yii\widgets\ActiveForm;
 <?php
 // @TODO : use namespace of foreign keys & widgets

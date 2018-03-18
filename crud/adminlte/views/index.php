@@ -18,7 +18,7 @@ echo "<?php\n";
 <?= !empty($generator->searchModelClass) ? "/* @var \$searchModel " . ltrim($generator->searchModelClass, '\\') . " */\n" : '' ?>
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-use yii\helpers\Html;
+use kartik\helpers\Html;
 use kartik\export\ExportMenu;
 use kartik\dynagrid\DynaGrid;
 use <?= $generator->indexWidgetType === 'grid' ? "kartik\\grid\\GridView;" : "yii\\widgets\\ListView;" ?>
