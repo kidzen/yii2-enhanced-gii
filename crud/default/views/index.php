@@ -49,8 +49,8 @@ $this->registerJs($search);
         <?= "<?= " ?> $this->render('_search', ['model' => $searchModel]); ?>
     </div>
     <?php endif; ?>
-<?php 
-if ($generator->indexWidgetType === 'grid'): 
+<?php
+if ($generator->indexWidgetType === 'grid'):
 ?>
 <?= "<?php \n" ?>
     $gridColumn = [
@@ -73,7 +73,7 @@ if ($generator->indexWidgetType === 'grid'):
 <?php
     endif;
 ?>
-<?php   
+<?php
     if ($tableSchema === false) :
         foreach ($generator->getColumnNames() as $name) {
             if (++$count < 6) {
@@ -83,7 +83,7 @@ if ($generator->indexWidgetType === 'grid'):
             }
         }
     else :
-        foreach ($tableSchema->getColumnNames() as $attribute): 
+        foreach ($tableSchema->getColumnNames() as $attribute):
             if (!in_array($attribute, $generator->skippedColumns)) :
 ?>
         <?= $generator->generateGridViewFieldIndex($attribute, $fk, $tableSchema)?>
@@ -99,11 +99,18 @@ if ($generator->indexWidgetType === 'grid'):
                     return Html::a('<span class="glyphicon glyphicon-copy"></span>', $url, ['title' => 'Save As New']);
                 },
             ],
+<?php else; ?>
+            'template' => '{view} {update} {delete} {delete-permanent}',
+            'buttons' => [
+                'delete-permanent' => function ($url) {
+                    return Html::a('<span class="glyphicon glyphicon-trash" style="color:red"></span>', $url, ['title' => 'Delete Permanent']);
+                },
+            ],
 <?php endif; ?>
         ],
-    ]; 
-<?php 
-    endif; 
+    ];
+<?php
+    endif;
 ?>
     ?>
     <?= "<?= " ?>GridView::widget([
@@ -141,8 +148,8 @@ if ($generator->indexWidgetType === 'grid'):
             ]) ,
         ],
     ]); ?>
-<?php 
-else: 
+<?php
+else:
 ?>
     <?= "<?= " ?>ListView::widget([
         'dataProvider' => $dataProvider,
@@ -151,8 +158,8 @@ else:
             return $this->render('_index',['model' => $model, 'key' => $key, 'index' => $index, 'widget' => $widget, 'view' => $this]);
         },
     ]) ?>
-<?php 
-endif; 
+<?php
+endif;
 ?>
 
 </div>
