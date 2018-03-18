@@ -93,7 +93,7 @@ if ($generator->indexWidgetType === 'grid'):
         [
             'class' => 'yii\grid\ActionColumn',
 <?php if($generator->saveAsNew): ?>
-            'template' => '{save-as-new} {view} {update} {delete}',
+            'template' => '{save-as-new} {view} {update} {delete} {delete-permanent}',
 <?php else : ?>
             'template' => '{view} {update} {delete} {delete-permanent}',
 <?php endif; ?>

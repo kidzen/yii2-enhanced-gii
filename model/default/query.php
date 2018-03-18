@@ -33,11 +33,11 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->queryBaseClass, '\\
         return $this;
     }*/
 
-    /*public function mine()
+    public function mine()
     {
             $this->andWhere('[[created_by]]='.\Yii::$app->user->id);
         return $this;
-    }*/
+    }
 
     /**
      * @inheritdoc
