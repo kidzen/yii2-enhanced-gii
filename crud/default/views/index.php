@@ -94,19 +94,22 @@ if ($generator->indexWidgetType === 'grid'):
             'class' => 'yii\grid\ActionColumn',
 <?php if($generator->saveAsNew): ?>
             'template' => '{save-as-new} {view} {update} {delete}',
-            'buttons' => [
-                'save-as-new' => function ($url) {
-                    return Html::a('<span class="glyphicon glyphicon-copy"></span>', $url, ['title' => 'Save As New']);
-                },
-            ],
-<?php else; ?>
+<?php else : ?>
             'template' => '{view} {update} {delete} {delete-permanent}',
+<?php endif; ?>
             'buttons' => [
                 'delete-permanent' => function ($url) {
                     return Html::a('<span class="glyphicon glyphicon-trash" style="color:red"></span>', $url, ['title' => 'Delete Permanent']);
                 },
-            ],
+<?php if($generator->saveAsNew): ?>
+                'save-as-new' => function ($url) {
+                    return Html::a('<span class="glyphicon glyphicon-copy"></span>', $url, ['title' => 'Save As New']);
+                },
 <?php endif; ?>
+            ],
+            'visibleButtons' => [
+                'delete-permanent' => 'update' => \Yii::$app->user->can('admin'),
+            ]
         ],
     ];
 <?php
