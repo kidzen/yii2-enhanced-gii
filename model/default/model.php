@@ -239,12 +239,12 @@ class <?= $className ?> extends <?= ($isTree) ? '\kartik\tree\models\Tree' . "\n
     {
 <?php if($generator->deletedBy && array_key_exists($generator->deletedBy, $labels)): ?>
         $query = new <?= $queryClassFullName ?>(get_called_class());
-        // uncomment and edit permission rule to view deleted items
-        /* if(\Yii::$app->user->can('permission')){
+        // uncomment and edit permission rule to view own items only
+        /*if(\Yii::$app->user->can('permission')){
            $query->mine();
         } */
         // uncomment and edit permission rule to view deleted items
-        /* if(\Yii::$app->user->can('see_deleted')){
+        /*if(\Yii::$app->user->can('see_deleted')){
            return $query;
         } */
         return $query->andWhere(['<?= $tableName ?>.<?= $generator->deletedBy ?>' => <?= $generator->deletedByValueRestored ?>]);

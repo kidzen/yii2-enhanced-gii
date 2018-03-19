@@ -150,7 +150,8 @@ if ($generator->indexWidgetType === 'grid'):
 <?php endif;?>
             ]) ,
         ],
-    ]); ?>
+    ]);
+    ?>
 <?php
 else:
 ?>

@@ -613,6 +613,22 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
         if (is_null($tableSchema)) {
             $tableSchema = $this->getTableSchema();
         }
+        if (in_array($attribute, ['status'])) {
+            return "[
+            'attribute' => '$attribute',
+            'format' => 'raw',
+            'value' => function(\$model) {
+                switch (\$model['status']) {
+                    case 1:
+                    return Html::bsLabel('Active','success');
+                    break;
+
+                    default:
+                    return Html::bsLabel('Inactive','danger');
+                    break;
+                }
+            }
+        ],\n";
         if (in_array($attribute, $this->hiddenColumns)) {
             return "['attribute' => '$attribute', 'visible' => false],\n";
         }
