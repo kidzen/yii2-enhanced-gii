@@ -618,7 +618,7 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
             'attribute' => '$attribute',
             'format' => 'raw',
             'value' => function(\$model) {
-                switch (\$model['status']) {
+                switch (\$model['$attribute']) {
                     case 1:
                     return Html::bsLabel('Active','success');
                     break;
