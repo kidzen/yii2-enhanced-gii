@@ -613,7 +613,7 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
         if (is_null($tableSchema)) {
             $tableSchema = $this->getTableSchema();
         }
-        if (in_array($attribute, ['status'])) {
+        if (in_array($attribute, ['status','approved',$this->deletedBy])) {
             return "[
             'attribute' => '$attribute',
             'format' => 'raw',
