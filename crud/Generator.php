@@ -629,6 +629,7 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
                 }
             }
         ],\n";
+        }
         if (in_array($attribute, $this->hiddenColumns)) {
             return "['attribute' => '$attribute', 'visible' => false],\n";
         }
@@ -645,7 +646,7 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
 //        if($column->autoIncrement){
 //            return "";
 //        } else
-if (array_key_exists($attribute, $fk) && $attribute) {
+        if (array_key_exists($attribute, $fk) && $attribute) {
             $rel = $fk[$attribute];
             $labelCol = $this->getNameAttributeFK($rel[3]);
             $humanize = Inflector::humanize($rel[3]);

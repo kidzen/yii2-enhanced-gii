@@ -108,7 +108,7 @@ if ($generator->indexWidgetType === 'grid'):
             'filterSelector' => 'select[name="per-page"]',
             // 'showPageSummary'=>true,
             //'floatHeader'=>true,
-            'responsiveWrap'=>false,
+            //'responsiveWrap'=>false,
             'pjax' => true,
             'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-<?= Inflector::camel2id(StringHelper::basename($generator->modelClass))?>']],
             'panel' => [
