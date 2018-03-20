@@ -46,7 +46,8 @@ if ($generator->indexWidgetType === 'grid'):
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
 <?php
-    if ($generator->expandable && !empty($fk)):
+    // if ($generator->expandable && !empty($fk)):
+    if ($generator->expandable):
 ?>
         [
             'class' => 'kartik\grid\ExpandRowColumn',
@@ -59,7 +60,7 @@ if ($generator->indexWidgetType === 'grid'):
             },
             'headerOptions' => ['class' => 'kartik-sheet-style'],
             'expandOneOnly' => true,
-            'visible' => false
+            'visible' => true,
         ],
 <?php
     endif;
