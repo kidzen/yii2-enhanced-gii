@@ -20,32 +20,35 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="form-<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-search">
+    <div class="row">
 
-    <?= "<?php " ?>$form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-    ]);
-    ?>
+        <?= "<?php " ?>$form = ActiveForm::begin([
+            'action' => ['index'],
+            'method' => 'get',
+        ]);
+        ?>
 
-<?php
-$count = 0;
-foreach ($generator->getColumnNames() as $attribute) {
-    if (!in_array($attribute, $generator->skippedColumns)) {
-        if (++$count < 6) {
-            echo "    <div class=\"col-md-4\">\n";
-            echo "        <?= " . $generator->generateActiveField($attribute, $fk) . " ?>\n\n";
-            echo "    </div>\n\n";
-        } else {
-            echo "    <?php /* echo " . $generator->generateActiveField($attribute, $fk) . " */ ?>\n\n";
+    <?php
+    $count = 0;
+    foreach ($generator->getColumnNames() as $attribute) {
+        if (!in_array($attribute, $generator->skippedColumns)) {
+            if (++$count < 6) {
+                echo "    <div class=\"col-md-4\">\n";
+                echo "        <?= " . $generator->generateActiveField($attribute, $fk) . " ?>\n\n";
+                echo "    </div>\n\n";
+            } else {
+                echo "    <?php /* echo " . $generator->generateActiveField($attribute, $fk) . " */ ?>\n\n";
+            }
         }
     }
-}
-?>
-    <div class="form-group col-md-4">
-        <?= "<?= " ?>Html::submitButton(<?= $generator->generateString('Search') ?>, ['class' => 'btn btn-primary']) ?>
-        <?= "<?= " ?>Html::resetButton(<?= $generator->generateString('Reset') ?>, ['class' => 'btn btn-default']) ?>
+    ?>
+        <div class="clearfix"></div>
+        <div class="form-group col-md-4">
+            <?= "<?= " ?>Html::submitButton(<?= $generator->generateString('Search') ?>, ['class' => 'btn btn-primary']) ?>
+            <?= "<?= " ?>Html::resetButton(<?= $generator->generateString('Reset') ?>, ['class' => 'btn btn-default']) ?>
+        </div>
+
+        <?= "<?php " ?>ActiveForm::end(); ?>
+
     </div>
-
-    <?= "<?php " ?>ActiveForm::end(); ?>
-
 </div>
