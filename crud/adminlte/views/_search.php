@@ -30,11 +30,13 @@ use yii\widgets\ActiveForm;
 $count = 0;
 foreach ($generator->getColumnNames() as $attribute) {
     if (!in_array($attribute, $generator->skippedColumns)) {
+        echo "<div class=\"col-md-4\">";
         if (++$count < 6) {
             echo "    <?= " . $generator->generateActiveField($attribute, $fk) . " ?>\n\n";
         } else {
             echo "    <?php /* echo " . $generator->generateActiveField($attribute, $fk) . " */ ?>\n\n";
         }
+        echo "</div>";
     }
 }
 ?>
