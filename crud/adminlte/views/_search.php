@@ -24,23 +24,24 @@ use yii\widgets\ActiveForm;
     <?= "<?php " ?>$form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
-    ]); ?>
+    ]);
+    ?>
 
 <?php
 $count = 0;
 foreach ($generator->getColumnNames() as $attribute) {
     if (!in_array($attribute, $generator->skippedColumns)) {
-        echo "<div class=\"col-md-4\">";
         if (++$count < 6) {
-            echo "    <?= " . $generator->generateActiveField($attribute, $fk) . " ?>\n\n";
+            echo "    <div class=\"col-md-4\">\n";
+            echo "        <?= " . $generator->generateActiveField($attribute, $fk) . " ?>\n\n";
+            echo "    </div>\n\n";
         } else {
             echo "    <?php /* echo " . $generator->generateActiveField($attribute, $fk) . " */ ?>\n\n";
         }
-        echo "</div>";
     }
 }
 ?>
-    <div class="form-group">
+    <div class="form-group col-md-4">
         <?= "<?= " ?>Html::submitButton(<?= $generator->generateString('Search') ?>, ['class' => 'btn btn-primary']) ?>
         <?= "<?= " ?>Html::resetButton(<?= $generator->generateString('Reset') ?>, ['class' => 'btn btn-default']) ?>
     </div>
