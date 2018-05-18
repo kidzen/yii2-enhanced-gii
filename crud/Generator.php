@@ -27,7 +27,7 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
     public $skippedColumns = 'created_at, updated_at, created_by, updated_by, deleted_at, deleted_by, created, modified, deleted';
     public $nsModel = 'app\models';
     public $nsSearchModel = 'app\models\search';
-    public $booleanColumn = 'status, approved';
+    public $booleanColumn = ['status, approved'];
     public $generateSearchModel;
     public $searchModelClass;
     public $generateQuery = true;
@@ -526,24 +526,22 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
         if (in_array($attribute, $this->hiddenColumns)) {
             return "['attribute' => '$attribute', 'visible' => false],\n";
         }
-        if (isset($this->booleanColumn)) {
-            if (in_array($attribute, $this->booleanColumn) && !in_array($attribute, $this->hiddenColumns)) {
-                return "[
-                'attribute' => '$attribute',
-                'format' => 'raw',
-                'value' => function(\$model) {
-                    switch(\$model['$attribute']) {
-                        case 1:
-                        return \kartik\helpers\Html::bsLabel('Active','success');
-                        break;
-                        default:
-                        return \kartik\helpers\Html::bsLabel('Inactive','danger');
-                        break;
-                    }
-                    },
-                    'visible' => true,
-                ],\n";
-            }
+        if (in_array($attribute, $this->booleanColumn) && !in_array($attribute, $this->hiddenColumns)) {
+            return "[
+            'attribute' => '$attribute',
+            'format' => 'raw',
+            'value' => function(\$model) {
+                switch(\$model['$attribute']) {
+                    case 1:
+                    return \kartik\helpers\Html::bsLabel('Active','success');
+                    break;
+                    default:
+                    return \kartik\helpers\Html::bsLabel('Inactive','danger');
+                    break;
+                }
+                },
+                'visible' => true,
+            ],\n";
         }
         $humanize = Inflector::humanize($attribute, true);
         if ($tableSchema === false || !isset($tableSchema->columns[$attribute])) {
@@ -591,24 +589,22 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
         if (in_array($attribute, $this->hiddenColumns)) {
             return "['attribute' => '$attribute', 'visible' => false],\n";
         }
-        if (isset($this->booleanColumn)) {
-            if (in_array($attribute, $this->booleanColumn) && !in_array($attribute, $this->hiddenColumns)) {
-                return "[
-                'attribute' => '$attribute',
-                'format' => 'raw',
-                'value' => function(\$model) {
-                    switch(\$model['$attribute']) {
-                        case 1:
-                        return \kartik\helpers\Html::bsLabel('Active','success');
-                        break;
-                        default:
-                        return \kartik\helpers\Html::bsLabel('Inactive','danger');
-                        break;
-                    }
-                    },
-                    'visible' => true,
-                ],\n";
-            }
+        if (in_array($attribute, $this->booleanColumn) && !in_array($attribute, $this->hiddenColumns)) {
+            return "[
+            'attribute' => '$attribute',
+            'format' => 'raw',
+            'value' => function(\$model) {
+                switch(\$model['$attribute']) {
+                    case 1:
+                    return \kartik\helpers\Html::bsLabel('Active','success');
+                    break;
+                    default:
+                    return \kartik\helpers\Html::bsLabel('Inactive','danger');
+                    break;
+                }
+                },
+                'visible' => true,
+            ],\n";
         }
         if ($tableSchema === false || !isset($tableSchema->columns[$attribute])) {
             if (preg_match('/^(password|pass|passwd|passcode)$/i', $attribute)) {
@@ -651,25 +647,23 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
         if (is_null($tableSchema)) {
             $tableSchema = $this->getTableSchema();
         }
-        if (isset($this->booleanColumn)) {
-            if (in_array($attribute, $this->booleanColumn) && !in_array($attribute, $this->hiddenColumns)) {
-                return "[
-                'attribute' => '$attribute',
-                'format' => 'raw',
-                'value' => function(\$model) {
-                    switch (\$model['$attribute']) {
-                        case 1:
-                        return \kartik\helpers\Html::bsLabel('Active','success');
-                        break;
+        if (in_array($attribute, $this->booleanColumn) && !in_array($attribute, $this->hiddenColumns)) {
+            return "[
+            'attribute' => '$attribute',
+            'format' => 'raw',
+            'value' => function(\$model) {
+                switch (\$model['$attribute']) {
+                    case 1:
+                    return \kartik\helpers\Html::bsLabel('Active','success');
+                    break;
 
-                        default:
-                        return \kartik\helpers\Html::bsLabel('Inactive','danger');
-                        break;
-                    }
+                    default:
+                    return \kartik\helpers\Html::bsLabel('Inactive','danger');
+                    break;
                 }
-                ],\n
-                ";
             }
+            ],\n
+            ";
         }
         if (in_array($attribute, $this->hiddenColumns)) {
             return "['attribute' => '$attribute', 'visible' => false],\n";
