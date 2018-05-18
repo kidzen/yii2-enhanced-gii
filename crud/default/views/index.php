@@ -109,7 +109,9 @@ if ($generator->indexWidgetType === 'grid'):
 <?php endif; ?>
             ],
             'visibleButtons' => [
-                'delete-permanent' => \Yii::$app->user->can('admin'),
+                'delete' => function ($model) { return $model['deleted_by'] < 1 ? true : false;},
+                'delete-permanent' => function ($model) { return $model['deleted_by'] > 0 ? true : false;},
+                // 'delete-permanent' => \Yii::$app->user->can('Administrator'),
             ]
         ],
     ];
