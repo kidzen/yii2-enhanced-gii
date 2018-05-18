@@ -54,7 +54,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
                 ],
             ],
 <?php if ($generator->loggedUserOnly):
-    $actions = ["'index'", "'view'", "'create'", "'update'","'delete'"];
+    $actions = ["'index'", "'view'", "'create'", "'update'","'delete'","'delete-permanent'"];
     if($generator->pdf){
         array_push($actions,"'pdf'");
     }
