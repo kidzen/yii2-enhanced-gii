@@ -76,7 +76,7 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
     public function getDescription()
     {
         return 'This generator generates controller and views that implement CRUD (Create, Read, Update, Delete)
-            operations for the database.';
+        operations for the database.';
     }
 
     /**
@@ -102,9 +102,9 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
             [['enableI18N', 'generateRelations', 'generateSearchModel', 'pluralize', 'expandable', 'cancelable', 'pdf', 'loggedUserOnly'], 'boolean'],
             [['messageCategory'], 'validateMessageCategory', 'skipOnEmpty' => false],
             [['viewPath', 'skippedRelations', 'skippedColumns',
-                'controllerClass', 'blameableValue', 'nameAttribute',
-                'hiddenColumns', 'createdAt', 'updatedAt', 'createdBy', 'updatedBy',
-                'UUIDColumn', 'saveAsNew'], 'safe'],
+            'controllerClass', 'blameableValue', 'nameAttribute',
+            'hiddenColumns', 'createdAt', 'updatedAt', 'createdBy', 'updatedBy',
+            'UUIDColumn', 'saveAsNew'], 'safe'],
         ]);
     }
 
@@ -138,102 +138,103 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
      */
     public function hints()
     {
-        return array_merge(parent::hints(), [
-            'db' => 'This is the ID of the DB application component.',
-            'tableName' => 'This is the name of the DB table that the new ActiveRecord class is associated with, e.g. <code>post</code>.
+        return array_merge(parent::hints(),
+            [
+                'db' => 'This is the ID of the DB application component.',
+                'tableName' => 'This is the name of the DB table that the new ActiveRecord class is associated with, e.g. <code>post</code>.
                 The table name may consist of the DB schema part if needed, e.g. <code>public.post</code>.
                 The table name may end with asterisk to match multiple table names, e.g. <code>tbl_*</code>
                 will match tables who name starts with <code>tbl_</code>. In this case, multiple ActiveRecord classes
                 will be generated, one for each matching table name; and the class names will be generated from
                 the matching characters. For example, table <code>tbl_post</code> will generate <code>Post</code>
                 class.',
-            'nameAttribute' => 'This is the (set) of name column that you use to show as label, '
+                'nameAttribute' => 'This is the (set) of name column that you use to show as label, '
                 . 'separated by comma (,) for multiple table(asterisk on Table Name).',
-            'skippedColumns' => 'Fill this field with the column name that you dont want to generate form & labels for the table.
+                'skippedColumns' => 'Fill this field with the column name that you dont want to generate form & labels for the table.
                 You can fill multiple columns, separated by comma (,). You may specify the column name
                 although "Table Name" ends with asterisk, in which case all columns will not be generated at all models & CRUD.',
-            'hiddenColumns' => 'Fill this field with the column name that you want to generate form with the hidden field of the table.
+                'hiddenColumns' => 'Fill this field with the column name that you want to generate form with the hidden field of the table.
                 You can fill multiple columns, separated by comma (,). You may specify the column name
                 although "Table Name" ends with asterisk, in which case all columns will be generated with hidden field at the forms',
-            'nsModel' => 'This is the namespace of the ActiveRecord class to be generated, e.g., <code>app\models</code>',
-            'modelClass' => 'This is the name of the Model class to be generated. The class name should not contain
+                'nsModel' => 'This is the namespace of the ActiveRecord class to be generated, e.g., <code>app\models</code>',
+                'modelClass' => 'This is the name of the Model class to be generated. The class name should not contain
                 the namespace part as it is specified in "Model Namespace". You do not need to specify the class name
                 if "Table Name" ends with asterisk, in which case multiple ActiveRecord classes will be generated.',
-            'baseModelClass' => 'This is the base class of the new ActiveRecord class. It should be a fully qualified namespaced class name.',
-            'nsSearchModel' => 'This is the namespace of the search model class to be generated, e.g., <code>app\models</code>',
-            'searchModelClass' => 'This is the name of the search class to be generated. The class name should not contain
+                    'baseModelClass' => 'This is the base class of the new ActiveRecord class. It should be a fully qualified namespaced class name.',
+                'nsSearchModel' => 'This is the namespace of the search model class to be generated, e.g., <code>app\models</code>',
+                'searchModelClass' => 'This is the name of the search class to be generated. The class name should not contain
                 the namespace part as it is specified in "Search Model Namespace". You do not need to specify the class name
                 if "Table Name" ends with asterisk, in which case multiple search model classes will be generated.',
-            'generateQuery' => 'This indicates whether to generate ActiveQuery for the ActiveRecord class.',
-            'generateLabelsFromComments' => 'This indicates whether the generator should generate attribute labels
+                    'generateQuery' => 'This indicates whether to generate ActiveQuery for the ActiveRecord class.',
+                'generateLabelsFromComments' => 'This indicates whether the generator should generate attribute labels
                 by using the comments of the corresponding DB columns.',
-            'useTablePrefix' => 'This indicates whether the table name returned by the generated ActiveRecord class
+                'useTablePrefix' => 'This indicates whether the table name returned by the generated ActiveRecord class
                 should consider the <code>tablePrefix</code> setting of the DB connection. For example, if the
                 table name is <code>tbl_post</code> and <code>tablePrefix=tbl_</code>, the ActiveRecord class
                 will return the table name as <code>{{%post}}</code>.',
-            'generateSearchModel' => 'This indicates whether the generator should generate search model based on
+                'generateSearchModel' => 'This indicates whether the generator should generate search model based on
                 columns it detects in the database.',
-            'generateRelations' => 'This indicates whether the generator should generate relations based on
+                'generateRelations' => 'This indicates whether the generator should generate relations based on
                 foreign key constraints it detects in the database. Note that if your database contains too many tables,
                 you may want to uncheck this option to accelerate the code generation process.',
-            'generateMigrations' => 'This indicates whether the generator should generate migrations based on
+                'generateMigrations' => 'This indicates whether the generator should generate migrations based on
                 table structure.',
-            'optimisticLock' => 'This indicates whether the generator should generate optimistic lock feature for Model. '
+                'optimisticLock' => 'This indicates whether the generator should generate optimistic lock feature for Model. '
                 . 'Enter this field with optimistic lock column name. '
                 . 'Empty this field if you want to disable this feature.',
-            'createdAt' => 'This indicates whether the generator should generate Timestamp Behaviors feature for Model. '
+                'createdAt' => 'This indicates whether the generator should generate Timestamp Behaviors feature for Model. '
                 . 'Enter this field with Created At column name. '
                 . 'Empty "Created At" & "Updated At" field if you want to disable this feature.',
-            'updatedAt' => 'This indicates whether the generator should generate Timestamp Behaviors feature for Model. '
+                'updatedAt' => 'This indicates whether the generator should generate Timestamp Behaviors feature for Model. '
                 . 'Enter this field with Updated At column name. '
                 . 'Empty "Created At" & "Updated At" field if you want to disable this feature.',
-            'timestampValue' => 'This will generate the </code>value</code> configuration entry for Timestamp Behaviors.  e.g., <code>new Expression(\'NOW()\')</code>',
-            'createdBy' => 'This indicates whether the generator should generate Blameable Behaviors feature for Model. '
+                'timestampValue' => 'This will generate the </code>value</code> configuration entry for Timestamp Behaviors.  e.g., <code>new Expression(\'NOW()\')</code>',
+                'createdBy' => 'This indicates whether the generator should generate Blameable Behaviors feature for Model. '
                 . 'Enter this field with Created By column name. '
                 . 'Empty "Created By" & "Updated By" field if you want to disable this feature.',
-            'updatedBy' => 'This indicates whether the generator should generate Blameable Behaviors feature for Model. '
+                'updatedBy' => 'This indicates whether the generator should generate Blameable Behaviors feature for Model. '
                 . 'Enter this field with Updated By column name. '
                 . 'Empty "Created By" & "Updated By" field if you want to disable this feature.',
-            'blameableValue' => 'This will generate the </code>value</code> configuration entry for Blameable Behaviors.  e.g., <code>new Expression(\'NOW()\')</code>',
-            'UUIDColumn' => 'This indicates whether the generator should generate UUID Behaviors feature for Model. '
+                'blameableValue' => 'This will generate the </code>value</code> configuration entry for Blameable Behaviors.  e.g., <code>new Expression(\'NOW()\')</code>',
+                'UUIDColumn' => 'This indicates whether the generator should generate UUID Behaviors feature for Model. '
                 . 'Enter this field with UUID column name. '
                 . 'Empty "UUID Column" field if you want to disable this feature.',
-            'deletedBy' => 'This indicates whether the generator should generate Soft Delete feature for Model. '
+                'deletedBy' => 'This indicates whether the generator should generate Soft Delete feature for Model. '
                 . 'Enter this field with Deleted By column name. '
                 . 'Empty "Deleted By" & "Deleted At" field if you want to disable this feature.',
-            'deletedAt' => 'This indicates whether the generator should generate Soft Delete feature for Model. '
+                'deletedAt' => 'This indicates whether the generator should generate Soft Delete feature for Model. '
                 . 'Enter this field with Updated By column name. '
                 . 'Empty "Deleted By" & "Deleted At" field if you want to disable this feature.',
-            'nsController' => 'This is the namespace of the Controller class to be generated, e.g., <code>app\controllers</code>',
-            'controllerClass' => 'This is the name of the Controller class to be generated. The class name should not contain
+                'nsController' => 'This is the namespace of the Controller class to be generated, e.g., <code>app\controllers</code>',
+                'controllerClass' => 'This is the name of the Controller class to be generated. The class name should not contain
                 the namespace part as it is specified in "Controller Namespace". You do not need to specify the class name
                 if "Table Name" ends with asterisk, in which case multiple Controller classes will be generated.',
-            'nsModel' => 'This is the namespace of the ActiveRecord class to be generated, e.g., <code>app\models</code>',
-            'pluralize' => 'Set the generator to generate pluralize for label',
-            'expandable' => 'Set the generator to generate expandable/collapsible row for related at index',
-            'cancelable' => 'Set the generator to generate cancel button to return to grid view at form',
-            'pdf' => 'Set the generator to generate printable PDF generator at view',
-            'viewPath' => 'Specify the directory for storing the view scripts for the controller. You may use path alias here, e.g.,
+                    'nsModel' => 'This is the namespace of the ActiveRecord class to be generated, e.g., <code>app\models</code>',
+                'pluralize' => 'Set the generator to generate pluralize for label',
+                'expandable' => 'Set the generator to generate expandable/collapsible row for related at index',
+                'cancelable' => 'Set the generator to generate cancel button to return to grid view at form',
+                'pdf' => 'Set the generator to generate printable PDF generator at view',
+                'viewPath' => 'Specify the directory for storing the view scripts for the controller. You may use path alias here, e.g.,
                 <code>/var/www/basic/controllers/views/post</code>, <code>@app/views/post</code>. If not set, it will default
                 to <code>@app/views/ControllerID</code>',
-            'baseControllerClass' => 'This is the class that the new CRUD controller class will extend from.
+                'baseControllerClass' => 'This is the class that the new CRUD controller class will extend from.
                 You should provide a fully qualified class name, e.g., <code>yii\web\Controller</code>.',
-            'skippedRelations' => 'Fill this field with the relation name that you dont want to generate CRUD for the table.
+                'skippedRelations' => 'Fill this field with the relation name that you dont want to generate CRUD for the table.
                 You can fill multiple relations, separated by comma (,). You do not need to specify the class name
                 if "Table Name" ends with asterisk, in which case all relations will be generated.',
-            'indexWidgetType' => 'This is the widget type to be used in the index page to display list of the models.
+                    'indexWidgetType' => 'This is the widget type to be used in the index page to display list of the models.
                 You may choose either <code>GridView</code> or <code>ListView</code>',
-            'modelClass' => 'This is the name of the Model class to be generated. The class name should not contain
+                'modelClass' => 'This is the name of the Model class to be generated. The class name should not contain
                 the namespace part as it is specified in "Model Namespace". You do not need to specify the class name
                 if "Table Name" ends with asterisk, in which case multiple ActiveRecord classes will be generated.',
-            'queryNs' => 'This is the namespace of the ActiveQuery class to be generated, e.g., <code>app\models</code>',
-            'queryClass' => 'This is the name of the ActiveQuery class to be generated. The class name should not contain
+                    'queryNs' => 'This is the namespace of the ActiveQuery class to be generated, e.g., <code>app\models</code>',
+                'queryClass' => 'This is the name of the ActiveQuery class to be generated. The class name should not contain
                 the namespace part as it is specified in "ActiveQuery Namespace". You do not need to specify the class name
                 if "Table Name" ends with asterisk, in which case multiple ActiveQuery classes will be generated.',
-            'queryBaseClass' => 'This is the base class of the new ActiveQuery class. It should be a fully qualified namespaced class name.',
-            'saveAsNew' => 'Creates a new model by another data, so user don\'t need to input all field from scratch.'
-        ]);
-    }
+                    'queryBaseClass' => 'This is the base class of the new ActiveQuery class. It should be a fully qualified namespaced class name.',
+                'saveAsNew' => 'Creates a new model by another data, so user don\'t need to input all field from scratch.',
+            ]);
+}
 
     /**
      * @inheritdoc
@@ -327,13 +328,13 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
             $files[] = new CodeFile(
                 Yii::getAlias('@' . str_replace('\\', '/', $this->nsController)) . '/' . $controllerClassName . '.php',
                 ($isTree) ?
-                    $this->render('controllerNested.php', [
-                        'relations' => isset($relations[$tableName]) ? $relations[$tableName] : [],
-                    ])
-                    :
-                    $this->render('controller.php', [
-                        'relations' => isset($relations[$tableName]) ? $relations[$tableName] : [],
-                    ])
+                $this->render('controllerNested.php', [
+                    'relations' => isset($relations[$tableName]) ? $relations[$tableName] : [],
+                ])
+                :
+                $this->render('controller.php', [
+                    'relations' => isset($relations[$tableName]) ? $relations[$tableName] : [],
+                ])
             );
 
             // views :
@@ -345,17 +346,13 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
                 if (empty($this->searchModelClass) && $file === '_search.php') {
                     continue;
                 }
-                if ($file === '_formrefone.php' || $file === '_formrefmany.php' || $file === '_datarefone.php'
-                    || $file === '_datarefmany.php' || $file === '_expand.php' || $file === '_detail.php'
-                    || $file === '_data.php' || $file === 'saveAsNew.php' || $file === '_pdf.php') {
+                if ($file === '_formrefone.php' || $file === '_formrefmany.php' || $file === '_datarefone.php' || $file === '_datarefmany.php' || $file === '_expand.php' || $file === '_detail.php' || $file === '_data.php' || $file === 'saveAsNew.php' || $file === '_pdf.php') {
                     continue;
                 }
                 if($this->indexWidgetType != 'list' && $file === '_index.php') {
                     continue;
                 }
-                if($isTree && ($file === 'index.php' || $file === 'view.php' || $file === '_form.php'
-                    || $file === 'create.php' || $file === 'update.php'
-                    )){
+                if($isTree && ($file === 'index.php' || $file === 'view.php' || $file === '_form.php' || $file === 'create.php' || $file === 'update.php')) {
                     continue;
                 }
                 if(!$isTree && ($file === 'indexNested.php' || $file === '_formNested.php')){
@@ -529,8 +526,9 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
         if (in_array($attribute, $this->hiddenColumns)) {
             return "['attribute' => '$attribute', 'visible' => false],\n";
         }
-        if (in_array($attribute, $this->booleanColumn) && !in_array($attribute, $this->hiddenColumns)) {
-            return "[
+        if (isset($this->booleanColumn)) {
+            if (in_array($attribute, $this->booleanColumn) && !in_array($attribute, $this->hiddenColumns)) {
+                return "[
                 'attribute' => '$attribute',
                 'format' => 'raw',
                 'value' => function(\$model) {
@@ -542,9 +540,10 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
                         return \kartik\helpers\Html::bsLabel('Inactive','danger');
                         break;
                     }
-                },
-                'visible' => true,
-            ],\n";
+                    },
+                    'visible' => true,
+                ],\n";
+            }
         }
         $humanize = Inflector::humanize($attribute, true);
         if ($tableSchema === false || !isset($tableSchema->columns[$attribute])) {
@@ -568,7 +567,8 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
             $output = "[
             'attribute' => '$rel[7].$labelCol',
             'label' => " . $this->generateString(ucwords(Inflector::humanize($rel[5]))) . ",
-        ],\n";
+            ],\n
+            ";
             return $output;
         } else {
             return "'$attribute" . ($format === 'text' ? "" : ":" . $format) . "',\n";
@@ -591,8 +591,9 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
         if (in_array($attribute, $this->hiddenColumns)) {
             return "['attribute' => '$attribute', 'visible' => false],\n";
         }
-        if (in_array($attribute, $this->booleanColumn) && !in_array($attribute, $this->hiddenColumns)) {
-            return "[
+        if (isset($this->booleanColumn)) {
+            if (in_array($attribute, $this->booleanColumn) && !in_array($attribute, $this->hiddenColumns)) {
+                return "[
                 'attribute' => '$attribute',
                 'format' => 'raw',
                 'value' => function(\$model) {
@@ -604,9 +605,10 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
                         return \kartik\helpers\Html::bsLabel('Inactive','danger');
                         break;
                     }
-                },
-                'visible' => true,
-            ],\n";
+                    },
+                    'visible' => true,
+                ],\n";
+            }
         }
         if ($tableSchema === false || !isset($tableSchema->columns[$attribute])) {
             if (preg_match('/^(password|pass|passwd|passcode)$/i', $attribute)) {
@@ -627,9 +629,10 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
             $labelCol = $this->getNameAttributeFK($rel[3]);
 //            $modelRel = $rel[2] ? lcfirst(Inflector::pluralize($rel[1])) : lcfirst($rel[1]);
             $output = "[
-                'attribute' => '$rel[7].$labelCol',
-                'label' => " . $this->generateString(ucwords(Inflector::humanize($rel[5]))) . "
-            ],\n";
+            'attribute' => '$rel[7].$labelCol',
+            'label' => " . $this->generateString(ucwords(Inflector::humanize($rel[5]))) . "
+            ],\n
+            ";
             return $output;
         } else {
             return "'$attribute" . ($format === 'text' ? "" : ":" . $format) . "',\n";
@@ -648,22 +651,25 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
         if (is_null($tableSchema)) {
             $tableSchema = $this->getTableSchema();
         }
-        if (in_array($attribute, $this->booleanColumn) && !in_array($attribute, $this->hiddenColumns)) {
-            return "[
-            'attribute' => '$attribute',
-            'format' => 'raw',
-            'value' => function(\$model) {
-                switch (\$model['$attribute']) {
-                    case 1:
-                    return \kartik\helpers\Html::bsLabel('Active','success');
-                    break;
+        if (isset($this->booleanColumn)) {
+            if (in_array($attribute, $this->booleanColumn) && !in_array($attribute, $this->hiddenColumns)) {
+                return "[
+                'attribute' => '$attribute',
+                'format' => 'raw',
+                'value' => function(\$model) {
+                    switch (\$model['$attribute']) {
+                        case 1:
+                        return \kartik\helpers\Html::bsLabel('Active','success');
+                        break;
 
-                    default:
-                    return \kartik\helpers\Html::bsLabel('Inactive','danger');
-                    break;
+                        default:
+                        return \kartik\helpers\Html::bsLabel('Inactive','danger');
+                        break;
+                    }
                 }
+                ],\n
+                ";
             }
-        ],\n";
         }
         if (in_array($attribute, $this->hiddenColumns)) {
             return "['attribute' => '$attribute', 'visible' => false],\n";
@@ -687,8 +693,8 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
             $humanize = Inflector::humanize($rel[3]);
             $id = 'grid-' . Inflector::camel2id(StringHelper::basename($this->searchModelClass)) . '-' . $attribute;
 //            $modelRel = $rel[2] ? lcfirst(Inflector::pluralize($rel[1])) : lcfirst($rel[1]);
-           if ($column->allowNull)
-           { $output = "[
+            if ($column->allowNull) {
+                $output = "[
                 'attribute' => '$attribute',
                 'label' => " . $this->generateString(ucwords(Inflector::humanize($rel[5]))) . ",
                 'value' => function(\$model){
@@ -696,32 +702,31 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
                     {return \$model->$rel[7]->$labelCol;}
                     else
                     {return NULL;}
-                },
-                'filterType' => GridView::FILTER_SELECT2,
-                'filter' => \\yii\\helpers\\ArrayHelper::map(\\$this->nsModel\\$rel[1]::find()->asArray()->all(), '{$rel[self::REL_PRIMARY_KEY]}', '$labelCol'),
-                'filterWidgetOptions' => [
+                    },
+                    'filterType' => GridView::FILTER_SELECT2,
+                    'filter' => \\yii\\helpers\\ArrayHelper::map(\\$this->nsModel\\$rel[1]::find()->asArray()->all(), '{$rel[self::REL_PRIMARY_KEY]}', '$labelCol'),
+                    'filterWidgetOptions' => [
                     'pluginOptions' => ['allowClear' => true],
-                ],
-                'filterInputOptions' => ['placeholder' => '$humanize', 'id' => '$id']
-            ],\n";
-           return $output;
-           }
-           else
-           { $output = "[
+                    ],
+                    'filterInputOptions' => ['placeholder' => '$humanize', 'id' => '$id']
+                ],\n";
+                return $output;
+            } else {
+                $output = "[
                 'attribute' => '$attribute',
                 'label' => " . $this->generateString(ucwords(Inflector::humanize($rel[5]))) . ",
                 'value' => function(\$model){
                     return \$model->$rel[7]->$labelCol;
-                },
-                'filterType' => GridView::FILTER_SELECT2,
-                'filter' => \\yii\\helpers\\ArrayHelper::map(\\$this->nsModel\\$rel[1]::find()->asArray()->all(), '{$rel[self::REL_PRIMARY_KEY]}', '$labelCol'),
-                'filterWidgetOptions' => [
+                    },
+                    'filterType' => GridView::FILTER_SELECT2,
+                    'filter' => \\yii\\helpers\\ArrayHelper::map(\\$this->nsModel\\$rel[1]::find()->asArray()->all(), '{$rel[self::REL_PRIMARY_KEY]}', '$labelCol'),
+                    'filterWidgetOptions' => [
                     'pluginOptions' => ['allowClear' => true],
-                ],
-                'filterInputOptions' => ['placeholder' => '$humanize', 'id' => '$id']
-            ],\n";
-           return $output;
-           }
+                    ],
+                    'filterInputOptions' => ['placeholder' => '$humanize', 'id' => '$id']
+                ],\n";
+                return $output;
+            }
         } else {
             return "'$attribute" . ($format === 'text' ? "" : ":" . $format) . "',\n";
         }
@@ -745,119 +750,124 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
             return "'$attribute' => ['type' => TabularForm::INPUT_WIDGET,
             'widgetClass' => \\kartik\\widgets\\Select2::className(),
             'options' => [
-                'data' => [1 => 'Active', 0 => 'Inactive'],
-                'options' => ['placeholder' => " . $this->generateString('Choose ' . $humanize) . ",],
-                'pluginOptions' => [
-                    'allowClear' => true,
-                ],
+            'data' => [1 => 'Active', 0 => 'Inactive'],
+            'options' => ['placeholder' => " . $this->generateString('Choose ' . $humanize) . ",],
+            'pluginOptions' => [
+            'allowClear' => true,
+            ],
             ],
             'columnOptions' => ['width' => '200px'],
         ]";
-        }
-        if ($tableSchema === false || !isset($tableSchema->columns[$attribute])) {
-            if (preg_match('/^(password|pass|passwd|passcode)$/i', $attribute)) {
-                return "\"$attribute\" => ['type' => TabularForm::INPUT_PASSWORD]";
-            } else {
-                return "\"$attribute\" => ['type' => TabularForm::INPUT_TEXT]";
-            }
-        }
-        $column = $tableSchema->columns[$attribute];
-        if ($column->autoIncrement) {
-            return "'$attribute' => ['type' => TabularForm::INPUT_HIDDEN]";
-        } elseif ($column->phpType === 'boolean' || $column->dbType === 'tinyint(1)') {
-            return "'$attribute' => ['type' => TabularForm::INPUT_CHECKBOX,
-            'options' => [
-                'style' => 'position : relative; margin-top : -9px'
-            ]
-        ]";
-        } elseif ($column->type === 'text' || $column->dbType === 'tinytext') {
-            return "'$attribute' => ['type' => TabularForm::INPUT_TEXTAREA]";
-        } elseif ($column->dbType === 'date') {
-            return "'$attribute' => ['type' => TabularForm::INPUT_WIDGET,
-            'widgetClass' => \\kartik\\datecontrol\\DateControl::classname(),
-            'options' => [
-                'type' => \\kartik\\datecontrol\\DateControl::FORMAT_DATE,
-                'saveFormat' => 'php:Y-m-d',
-                'ajaxConversion' => true,
-                'options' => [
-                    'pluginOptions' => [
-                        'placeholder' => " . $this->generateString('Choose ' . $humanize) . ",
-                        'autoclose' => true
-                    ]
-                ],
-            ]
-        ]";
-        } elseif ($column->dbType === 'time') {
-            return "'$attribute' => ['type' => TabularForm::INPUT_WIDGET,
-            'widgetClass' => \\kartik\\datecontrol\\DateControl::classname(),
-            'options' => [
-                'type' => \\kartik\\datecontrol\\DateControl::FORMAT_TIME,
-                'saveFormat' => 'php:H:i:s',
-                'ajaxConversion' => true,
-                'options' => [
-                    'pluginOptions' => [
-                        'placeholder' => " . $this->generateString('Choose ' . $humanize) . ",
-                        'autoclose' => true
-                    ]
-                ]
-            ]
-        ]";
-        } elseif ($column->dbType === 'datetime') {
-            return "'$attribute' => ['type' => TabularForm::INPUT_WIDGET,
-            'widgetClass' => \\kartik\\datecontrol\\DateControl::classname(),
-            'options' => [
-                'type' => \\kartik\\datecontrol\\DateControl::FORMAT_DATETIME,
-                'saveFormat' => 'php:Y-m-d H:i:s',
-                'ajaxConversion' => true,
-                'options' => [
-                    'pluginOptions' => [
-                        'placeholder' => " . $this->generateString('Choose ' . $humanize) . ",
-                        'autoclose' => true,
-                    ]
-                ],
-            ]
-        ]";
-        } elseif (array_key_exists($column->name, $fk)) {
-            $rel = $fk[$column->name];
-            $labelCol = $this->getNameAttributeFK($rel[self::REL_TABLE]);
-            $humanize = Inflector::humanize($rel[self::REL_TABLE]);
-//            $pk = empty($this->tableSchema->primaryKey) ? $this->tableSchema->getColumnNames()[0] : $this->tableSchema->primaryKey[0];
-            $fkClassFQ = "\\" . $this->nsModel . "\\" . $rel[self::REL_CLASS];
-            $output = "'$attribute' => [
-            'label' => '$humanize',
-            'type' => TabularForm::INPUT_WIDGET,
-            'widgetClass' => \\kartik\\widgets\\Select2::className(),
-            'options' => [
-                'data' => \\yii\\helpers\\ArrayHelper::map($fkClassFQ::find()->orderBy('$labelCol')->asArray()->all(), '{$rel[self::REL_PRIMARY_KEY]}', '$labelCol'),
-                'options' => ['placeholder' => " . $this->generateString('Choose ' . $humanize) . "],
-                'pluginOptions' => [
-                    'allowClear' => true,
-                ],
-            ],
-            'columnOptions' => ['width' => '200px']
-        ]";
-            return $output;
+    }
+    if ($tableSchema === false || !isset($tableSchema->columns[$attribute])) {
+        if (preg_match('/^(password|pass|passwd|passcode)$/i', $attribute)) {
+            return "\"$attribute\" => ['type' => TabularForm::INPUT_PASSWORD]";
         } else {
-            if (preg_match('/^(password|pass|passwd|passcode)$/i', $column->name)) {
-                $input = 'INPUT_PASSWORD';
-            } else {
-                $input = 'INPUT_TEXT';
+            return "\"$attribute\" => ['type' => TabularForm::INPUT_TEXT]";
+        }
+    }
+    $column = $tableSchema->columns[$attribute];
+    if ($column->autoIncrement) {
+        return "'$attribute' => ['type' => TabularForm::INPUT_HIDDEN]";
+    } elseif ($column->phpType === 'boolean' || $column->dbType === 'tinyint(1)') {
+        return "'$attribute' => ['type' => TabularForm::INPUT_CHECKBOX,
+        'options' => [
+        'style' => 'position : relative; margin-top : -9px'
+        ]
+        ]
+        ";
+    } elseif ($column->type === 'text' || $column->dbType === 'tinytext') {
+        return "'$attribute' => ['type' => TabularForm::INPUT_TEXTAREA]";
+    } elseif ($column->dbType === 'date') {
+        return "'$attribute' => ['type' => TabularForm::INPUT_WIDGET,
+        'widgetClass' => \\kartik\\datecontrol\\DateControl::classname(),
+        'options' => [
+        'type' => \\kartik\\datecontrol\\DateControl::FORMAT_DATE,
+        'saveFormat' => 'php:Y-m-d',
+        'ajaxConversion' => true,
+        'options' => [
+        'pluginOptions' => [
+        'placeholder' => " . $this->generateString('Choose ' . $humanize) . ",
+        'autoclose' => true
+        ]
+        ],
+        ]
+        ]
+        ";
+    } elseif ($column->dbType === 'time') {
+        return "'$attribute' => ['type' => TabularForm::INPUT_WIDGET,
+        'widgetClass' => \\kartik\\datecontrol\\DateControl::classname(),
+        'options' => [
+        'type' => \\kartik\\datecontrol\\DateControl::FORMAT_TIME,
+        'saveFormat' => 'php:H:i:s',
+        'ajaxConversion' => true,
+        'options' => [
+        'pluginOptions' => [
+        'placeholder' => " . $this->generateString('Choose ' . $humanize) . ",
+        'autoclose' => true
+        ]
+        ]
+        ]
+        ]
+        ";
+    } elseif ($column->dbType === 'datetime') {
+        return "'$attribute' => ['type' => TabularForm::INPUT_WIDGET,
+        'widgetClass' => \\kartik\\datecontrol\\DateControl::classname(),
+        'options' => [
+        'type' => \\kartik\\datecontrol\\DateControl::FORMAT_DATETIME,
+        'saveFormat' => 'php:Y-m-d H:i:s',
+        'ajaxConversion' => true,
+        'options' => [
+        'pluginOptions' => [
+        'placeholder' => " . $this->generateString('Choose ' . $humanize) . ",
+        'autoclose' => true,
+        ]
+        ],
+        ]
+        ]
+        ";
+    } elseif (array_key_exists($column->name, $fk)) {
+        $rel = $fk[$column->name];
+        $labelCol = $this->getNameAttributeFK($rel[self::REL_TABLE]);
+        $humanize = Inflector::humanize($rel[self::REL_TABLE]);
+//            $pk = empty($this->tableSchema->primaryKey) ? $this->tableSchema->getColumnNames()[0] : $this->tableSchema->primaryKey[0];
+        $fkClassFQ = "\\" . $this->nsModel . "\\" . $rel[self::REL_CLASS];
+        $output = "'$attribute' => [
+        'label' => '$humanize',
+        'type' => TabularForm::INPUT_WIDGET,
+        'widgetClass' => \\kartik\\widgets\\Select2::className(),
+        'options' => [
+        'data' => \\yii\\helpers\\ArrayHelper::map($fkClassFQ::find()->orderBy('$labelCol')->asArray()->all(), '{$rel[self::REL_PRIMARY_KEY]}', '$labelCol'),
+        'options' => ['placeholder' => " . $this->generateString('Choose ' . $humanize) . "],
+        'pluginOptions' => [
+        'allowClear' => true,
+        ],
+        ],
+        'columnOptions' => ['width' => '200px']
+        ]
+        ";
+        return $output;
+    } else {
+        if (preg_match('/^(password|pass|passwd|passcode)$/i', $column->name)) {
+            $input = 'INPUT_PASSWORD';
+        } else {
+            $input = 'INPUT_TEXT';
+        }
+        if (is_array($column->enumValues) && count($column->enumValues) > 0) {
+            $dropDownOptions = [];
+            foreach ($column->enumValues as $enumValue) {
+                $dropDownOptions[$enumValue] = Inflector::humanize($enumValue);
             }
-            if (is_array($column->enumValues) && count($column->enumValues) > 0) {
-                $dropDownOptions = [];
-                foreach ($column->enumValues as $enumValue) {
-                    $dropDownOptions[$enumValue] = Inflector::humanize($enumValue);
-                }
-                return "'$attribute' => ['type' => TabularForm::INPUT_DROPDOWN_LIST,
-                    'items' => " . preg_replace("/\n\s*/", ' ', VarDumper::export($dropDownOptions)) . ",
-                    'options' => [
-                        'columnOptions' => ['width' => '185px'],
-                        'options' => ['placeholder' => " . $this->generateString('Choose ' . $humanize) . "],
-                    ]
+            return "'$attribute' => ['type' => TabularForm::INPUT_DROPDOWN_LIST,
+            'items' => " . preg_replace("/\n\s*/", ' ', VarDumper::export($dropDownOptions)) . ",
+            'options' => [
+            'columnOptions' => ['width' => '185px'],
+            'options' => ['placeholder' => " . $this->generateString('Choose ' . $humanize) . "],
+            ]
         ]";
-            } elseif ($column->phpType !== 'string' || $column->size === null) {
-                return "'$attribute' => ['type' => TabularForm::$input]";
-            } else {
+    } elseif ($column->phpType !== 'string' || $column->size === null) {
+        return "'$attribute' => ['type' => TabularForm::$input]";
+    } else {
                 return "'$attribute' => ['type' => TabularForm::$input]"; //max length??
             }
         }
@@ -889,9 +899,10 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
             'data' => [1 => 'Active', 0 => 'Inactive'],
             'options' => ['placeholder' => 'Select $attribute ...'],
             'pluginOptions' => [
-                'allowClear' => true,
+            'allowClear' => true,
             ],
-        ]);";
+            ]);
+            ";
         }
         $placeholder = Inflector::humanize($attribute, true);
         if ($tableSchema === false || !isset($tableSchema->columns[$attribute])) {
@@ -910,40 +921,43 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
             return "\$form->field($model, '$attribute')->textarea(['rows' => 6])";
         } elseif ($column->dbType === 'date') {
             return "\$form->field($model, '$attribute')->widget(\\kartik\\datecontrol\\DateControl::classname(), [
-        'type' => \\kartik\\datecontrol\\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
-        'ajaxConversion' => true,
-        'options' => [
+            'type' => \\kartik\\datecontrol\\DateControl::FORMAT_DATE,
+            'saveFormat' => 'php:Y-m-d',
+            'ajaxConversion' => true,
+            'options' => [
             'pluginOptions' => [
-                'placeholder' => " . $this->generateString('Choose ' . $placeholder) . ",
-                'autoclose' => true
+            'placeholder' => " . $this->generateString('Choose ' . $placeholder) . ",
+            'autoclose' => true
             ]
-        ],
-    ]);";
+            ],
+            ]);
+            ";
         } elseif ($column->dbType === 'time') {
             return "\$form->field($model, '$attribute')->widget(\\kartik\\datecontrol\\DateControl::className(), [
-        'type' => \\kartik\\datecontrol\\DateControl::FORMAT_TIME,
-        'saveFormat' => 'php:H:i:s',
-        'ajaxConversion' => true,
-        'options' => [
+            'type' => \\kartik\\datecontrol\\DateControl::FORMAT_TIME,
+            'saveFormat' => 'php:H:i:s',
+            'ajaxConversion' => true,
+            'options' => [
             'pluginOptions' => [
-                'placeholder' => " . $this->generateString('Choose ' . $placeholder) . ",
-                'autoclose' => true
+            'placeholder' => " . $this->generateString('Choose ' . $placeholder) . ",
+            'autoclose' => true
             ]
-        ]
-    ]);";
+            ]
+            ]);
+            ";
         } elseif ($column->dbType === 'datetime') {
             return "\$form->field($model, '$attribute')->widget(\\kartik\\datecontrol\\DateControl::classname(), [
-        'type' => \\kartik\\datecontrol\\DateControl::FORMAT_DATETIME,
-        'saveFormat' => 'php:Y-m-d H:i:s',
-        'ajaxConversion' => true,
-        'options' => [
+            'type' => \\kartik\\datecontrol\\DateControl::FORMAT_DATETIME,
+            'saveFormat' => 'php:Y-m-d H:i:s',
+            'ajaxConversion' => true,
+            'options' => [
             'pluginOptions' => [
-                'placeholder' => " . $this->generateString('Choose ' . $placeholder) . ",
-                'autoclose' => true,
+            'placeholder' => " . $this->generateString('Choose ' . $placeholder) . ",
+            'autoclose' => true,
             ]
-        ],
-    ]);";
+            ],
+            ]);
+            ";
         } elseif (array_key_exists($column->name, $fk)) {
             $rel = $fk[$column->name];
             $labelCol = $this->getNameAttributeFK($rel[3]);
@@ -951,12 +965,13 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
 //            $pk = empty($this->tableSchema->primaryKey) ? $this->tableSchema->getColumnNames()[0] : $this->tableSchema->primaryKey[0];
             $fkClassFQ = "\\" . $this->nsModel . "\\" . $rel[1];
             $output = "\$form->field($model, '$attribute')->widget(\\kartik\\widgets\\Select2::classname(), [
-        'data' => \\yii\\helpers\\ArrayHelper::map($fkClassFQ::find()->orderBy('$rel[4]')->asArray()->all(), '$rel[4]', '$labelCol'),
-        'options' => ['placeholder' => " . $this->generateString('Choose ' . $humanize) . "],
-        'pluginOptions' => [
+            'data' => \\yii\\helpers\\ArrayHelper::map($fkClassFQ::find()->orderBy('$rel[4]')->asArray()->all(), '$rel[4]', '$labelCol'),
+            'options' => ['placeholder' => " . $this->generateString('Choose ' . $humanize) . "],
+            'pluginOptions' => [
             'allowClear' => true
-        ],
-    ]);";
+            ],
+            ]);
+            ";
             return $output;
         } else {
             if (preg_match('/^(password|pass|passwd|passcode)$/i', $column->name)) {
@@ -1084,24 +1099,24 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
                 case Schema::TYPE_SMALLINT:
                 case Schema::TYPE_INTEGER:
                 case Schema::TYPE_BIGINT:
-                    $types['integer'][] = $column->name;
-                    break;
+                $types['integer'][] = $column->name;
+                break;
                 case Schema::TYPE_BOOLEAN:
-                    $types['boolean'][] = $column->name;
-                    break;
+                $types['boolean'][] = $column->name;
+                break;
                 case Schema::TYPE_FLOAT:
                 case Schema::TYPE_DOUBLE:
                 case Schema::TYPE_DECIMAL:
                 case Schema::TYPE_MONEY:
-                    $types['number'][] = $column->name;
-                    break;
+                $types['number'][] = $column->name;
+                break;
                 case Schema::TYPE_DATE:
                 case Schema::TYPE_TIME:
                 case Schema::TYPE_DATETIME:
                 case Schema::TYPE_TIMESTAMP:
                 default:
-                    $types['safe'][] = $column->name;
-                    break;
+                $types['safe'][] = $column->name;
+                break;
             }
         }
 
@@ -1183,19 +1198,19 @@ class Generator extends \mootensai\enhancedgii\BaseGenerator
                 case Schema::TYPE_TIME:
                 case Schema::TYPE_DATETIME:
                 case Schema::TYPE_TIMESTAMP:
-                    $hashConditions[] = "'{$column}' => \$this->{$column},";
-                    break;
+                $hashConditions[] = "'{$column}' => \$this->{$column},";
+                break;
                 default:
-                    $likeConditions[] = "->andFilterWhere(['like', '{$column}', \$this->{$column}])";
-                    break;
+                $likeConditions[] = "->andFilterWhere(['like', '{$column}', \$this->{$column}])";
+                break;
             }
         }
 
         $conditions = [];
         if (!empty($hashConditions)) {
             $conditions[] = "\$query->andFilterWhere([\n"
-                . str_repeat(' ', 12) . implode("\n" . str_repeat(' ', 12), $hashConditions)
-                . "\n" . str_repeat(' ', 8) . "]);\n";
+            . str_repeat(' ', 12) . implode("\n" . str_repeat(' ', 12), $hashConditions)
+            . "\n" . str_repeat(' ', 8) . "]);\n";
         }
         if (!empty($likeConditions)) {
             $conditions[] = "\$query" . implode("\n" . str_repeat(' ', 12), $likeConditions) . ";\n";

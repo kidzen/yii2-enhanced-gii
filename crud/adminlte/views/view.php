@@ -138,7 +138,7 @@ if($provider<?= $rel[1] ?>->totalCount){
     <div class="col-sm-12">
     <div class="box box-danger">
         <div class="box-header">
-            <h4 class="title"><?= $rel[1] ?><?= "<?= " ?>' '. Html::encode($this->title) ?></h4>
+            <h4 class="title"><?= '<?= '.$generator->generateString(Inflector::camel2words($name)). ' ?>' ?></h4>
     <?= "<?php \n" ?>
     $gridColumn<?= $rel[1] ?> = [
 <?php
