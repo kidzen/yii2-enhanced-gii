@@ -75,4 +75,15 @@ class <?= $className ?> extends Base<?= $className . "\n" ?>
         // custom code here
         return parent::beforeSave($insert);
     } */
+
+    public static function arrayList()
+    {
+        $query = self::find()->select('id,name')->asArray()->all();
+        $callback = function($data) {
+            return $data['name'];
+        };
+
+        $result = \yii\helpers\ArrayHelper::map($query, 'id', $callback);
+        return $result;
+    }
 }
