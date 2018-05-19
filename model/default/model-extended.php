@@ -78,7 +78,7 @@ class <?= $className ?> extends Base<?= $className . "\n" ?>
 
     public static function arrayList()
     {
-        $query = self::find()->select('id,name')->asArray()->all();
+        $query = static::find()->select('id,name')->asArray()->all();
         $callback = function($data) {
             return $data['name'];
         };
